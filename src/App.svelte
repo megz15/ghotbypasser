@@ -5,7 +5,7 @@
 </script>
 
 <main>
-  <img src="{logo}" class="logo" alt="Vite Logo" />
+  <img src="{logo}" class="logo" alt="GhotBypasser Logo" />
   <h1>GhotBypasser</h1>
 
   <div class="card">
