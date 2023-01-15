@@ -1,4 +1,5 @@
 <script>
+  const urlParams = new URLSearchParams(window.location.search);
   import logo from './assets/logo.png'
   import LinkInput from './lib/LinkInput.svelte'
 </script>
@@ -8,7 +9,7 @@
   <h1>GhotBypasser</h1>
 
   <div class="card">
-    <LinkInput />
+    <LinkInput link="{urlParams.get("link")}"/>
   </div>
 
   <p>
@@ -16,7 +17,7 @@
   </p>
 
   <p class="footer">
-    Created with ☕ & 💗 by Meghraj Goswami
+    Created with ☕ & 💗 by <a href="https://github.com/megz15" target="_blank" rel="noreferrer">Meghraj Goswami</a>
   </p>
 </main>
 
