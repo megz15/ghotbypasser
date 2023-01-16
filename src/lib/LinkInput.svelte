@@ -1,11 +1,13 @@
 <script>
 export let link
 import Output from './Output.svelte'
+import Loading from './Loading.svelte'
 let out
 let parse = () => {
     out = 'load'
-    fetch(`https://proxy.cors.sh/${link}`)
-    .then(d => d.text())
+    link = encodeURIComponent(link)
+    fetch(`http://www.whateverorigin.org/get?url=${link}`)
+    .then(d => d.json()['contents'])
     .then(d => {
         let b = d.search('poster="')+8
         out = d.slice(b, d.indexOf('_l', b)).replace('previews', 'encoded') + '.webm'
@@ -23,7 +25,7 @@ if (link!=null){parse()}
 </div>
 {:else if out=='load'}
 <div>
-    loading
+    <Loading />
 </div>
 {:else}
 <div class="card">
