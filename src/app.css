@@ -60,6 +60,8 @@ h1 {
   font-size: 3.2em;
   line-height: 1;
   margin-bottom: 0px;
+  display: flex;
+  justify-content: center;
 }
 
 h3 {
@@ -98,8 +100,8 @@ input {
   transition: border-color 0.25s;
   text-align: center;
   width:50%;
-  min-width:350px;
-  margin: 1em;
+  min-width:300px;
+  margin: 1em auto;
 }
 input:hover {
   border-color: #646cff;
