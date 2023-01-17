@@ -5,8 +5,13 @@ import Loading from './Loading.svelte'
 import Supported from './Supported.svelte'
 let out
 let parse = () => {
+    // alert(import.meta.env.VITE_API_KEY)
     out = 'load'
-    fetch(`https://proxy.cors.sh/${link}`)
+    fetch(`https://proxy.cors.sh/${link}`,{
+        headers: {
+            'x-cors-api-key': import.meta.env.VITE_API_KEY,
+        }
+    })
     .then(d => d.text())
     .then(d => {
         let b = d.search('poster="')+8
