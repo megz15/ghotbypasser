@@ -15,7 +15,7 @@ let parse = () => {
     .then(d => d.text())
     .then(d => {
         let b = d.search('poster="')+8
-        out = d.slice(b, d.indexOf('_l', b)).replace('previews', 'encoded') + '.webm'
+        out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
         // console.log(d)
     })
     // out = 'https://cdn.numerade.com/encoded/758b4d3a-b577-4ab7-ac11-320d7b4779d6.webm'
