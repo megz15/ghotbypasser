@@ -129,20 +129,6 @@ button:active {
   transform: scale(0.85);
 }
 
-button:nth-child(1) {
-  background-color: green;
-}
-button:nth-child(1):hover {
-  border-color: green;
-  transition: background-color 0.5s;
-  background-color: rgb(8, 209, 8);
-}
-button:nth-child(1):not(:hover) {
-  border-color: green;
-  transition: background-color 0.5s;
-  background-color: green;
-}
-
 .btn-grp {
   padding: 0;
   margin: 0 auto;

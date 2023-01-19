@@ -3,6 +3,7 @@ export let link
 import Output from './Output.svelte'
 import Loading from './Loading.svelte'
 import Supported from './Supported.svelte'
+let ansBtn = false
 let out
 let parse = () => {
     // alert(import.meta.env.VITE_API_KEY)
@@ -22,9 +23,34 @@ let parse = () => {
 if (link!=null){parse()}
 </script>
 
-<input placeholder="Paste link here" bind:value="{link}" on:keyup={e=>e.key==='Enter'&&parse()}>
+<style>
+.answer {
+  background-color: green;
+}
+.answer:hover {
+  border-color: green;
+  transition: background-color 0.5s;
+  background-color: rgb(8, 209, 8);
+}
+.answer:not(:hover) {
+  border-color: green;
+  transition: background-color 0.5s;
+  background-color: green;
+}
+</style>
+
+<input placeholder="Paste link here" bind:value="{link}"
+    on:keyup={e=>e.key==='Enter'&&parse()}
+    on:input={
+        e => {
+            if (e.target.value==""){
+                ansBtn = false
+            } else ansBtn = true
+        }
+    }
+>
 <div class="btn-grp">
-    <button on:click={_ => parse()}>Get Answer</button>
+    <button on:click={_ => parse()} class:answer="{ansBtn}">Get Answer</button>
     <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser", '_blank').focus()}>Star me on GitHub!</button>
     <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc", '_blank').focus()}>Found a bug?</button>
 </div>
