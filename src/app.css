@@ -103,6 +103,7 @@ h3 {
 }
 
 input, button {
+  box-shadow: -1px -1px 2px #000000;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em;
@@ -124,7 +125,7 @@ input:hover, button:hover {
 
 button:active {
   background-color: #535bf2;
-  box-shadow: 0 5px #202020;
+  /* box-shadow: 0 5px #202020; */
   transform: scale(0.85);
 }
 
@@ -159,6 +160,8 @@ button:nth-child(1):not(:hover) {
   /* width: 49%; */
   min-width: 0px;
   margin: 0 0 1em 0;
+  transition: border-color 0.25s;
+  box-shadow: none;
 }
 
 svg.waves {
