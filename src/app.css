@@ -167,7 +167,7 @@ svg.waves {
 
 @media screen {
   svg.waves {
-    top: 5em;
+    top: 5.5em;
     display: block;
     filter: drop-shadow(0 0 10px #5393f2);
     left: 0;
