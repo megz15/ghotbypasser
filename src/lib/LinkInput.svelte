@@ -26,8 +26,8 @@ if (link!=null){parse()}
 
 <input placeholder="Paste link here" bind:value="{link}" on:keyup={e=>e.key==='Enter'&&parse()}>
 <div class="btn-grp">
-    <button>Star me on GitHub!</button>
-    <button>Found a bug?</button>
+    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser", '_blank').focus()}>Star me on GitHub!</button>
+    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc", '_blank').focus()}>Found a bug?</button>
 </div>
 
 {#if out==null}
