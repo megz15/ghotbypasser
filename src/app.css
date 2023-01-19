@@ -142,11 +142,10 @@ button:active {
 }
 
 .btn-grp > button {
-  transition: transform 0.08s ease-out;
+  transition: transform 0.08s ease-out, border-color 0.25s;
   /* width: 49%; */
   min-width: 0px;
   margin: 0 0 1em 0;
-  transition: border-color 0.25s;
   /* box-shadow: none; */
 }
 
