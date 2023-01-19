@@ -74,28 +74,25 @@ h3 {
   border: 0px;
 }
 
-.card {
+.card, .btn-grp {
   background-color: #202020;
   border-radius: 8px;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding: 0.5em;
   color: #535bf2;
   width:50%;
   min-width:350px;
-  margin: 1em auto;
-  margin-bottom: 3em;
+  margin: 0.5em auto;
+  margin-bottom: 5em;
 }
 
 #app {
   /* max-width: 1280px;
   margin: 0 auto;*/
-  padding: 2rem; 
+  /* padding: 2rem; */
   text-align: center;
 }
 
-input {
+input, button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em;
@@ -107,11 +104,36 @@ input {
   transition: border-color 0.25s;
   text-align: center;
   width:50%;
-  min-width:300px;
+  min-width:350px;
   margin: 1em auto;
 }
-input:hover {
+input:hover, button:hover {
   border-color: #646cff;
+}
+
+button:active {
+  background-color: #535bf2;
+  box-shadow: 0 5px #202020;
+  transform: scale(0.85);
+}
+
+.btn-grp {
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  gap: 20px;
+  background-color: transparent;
+  /* justify-content: space-between;
+  row-gap: 0px;
+  flex-wrap: wrap;
+  align-items: center; */
+}
+
+.btn-grp > button {
+  transition: transform 0.08s ease-out;
+  /* width: 49%; */
+  min-width: 0px;
+  margin: 0 0 1em 0;
 }
 
 svg.waves {

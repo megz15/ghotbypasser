@@ -25,6 +25,10 @@ if (link!=null){parse()}
 </script>
 
 <input placeholder="Paste link here" bind:value="{link}" on:keyup={e=>e.key==='Enter'&&parse()}>
+<div class="btn-grp">
+    <button>Star me on GitHub!</button>
+    <button>Found a bug?</button>
+</div>
 
 {#if out==null}
 <div>
