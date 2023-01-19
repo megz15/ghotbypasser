@@ -87,7 +87,7 @@ h3 {
 .card, .btn-grp {
   background-color: #202020;
   border-radius: 8px;
-  padding: 0.5em 1.5em 0.5em 1.5em;
+  padding: 0.5em 0em 0.5em 0em;
   color: #535bf2;
   width:50%;
   min-width:350px;
