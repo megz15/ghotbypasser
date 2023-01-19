@@ -6,20 +6,16 @@ import Supported from './Supported.svelte'
 let out
 let parse = () => {
     // alert(import.meta.env.VITE_API_KEY)
-    if (link!=null&&link.includes('numerade')){
+    if (link!=null&&link.includes('numerade')&&link.includes('question')){
         out = 'load'
-        fetch(`https://proxy.cors.sh/${link}`,{
-            headers: {
-                'x-cors-api-key': import.meta.env.VITE_API_KEY,
-            }
-        })
-        .then(d => d.text())
-        .then(d => {
-            let b = d.search('poster="')+8
-            // out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
-            out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded')
-            // console.log(d)
-        })
+        fetch(`/api/fetcher?link=${link}`)
+        .then(d => d.text()).then(d => out = d)
+        // .then(d => {
+        //     let b = d.search('poster="')+8
+        //     // out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
+        //     out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded')
+        //     // console.log(d)
+        // })
     }
     // out = 'https://cdn.numerade.com/encoded/758b4d3a-b577-4ab7-ac11-320d7b4779d6.webm'
 }
