@@ -87,12 +87,12 @@ h3 {
 .card, .btn-grp {
   background-color: #202020;
   border-radius: 8px;
-  padding: 0.5em;
+  padding: 0.5em 1.5em 0.5em 1.5em;
   color: #535bf2;
   width:50%;
   min-width:350px;
   margin: 0.5em auto;
-  margin-bottom: 5em;
+  margin-bottom: 3em;
 }
 
 #app {

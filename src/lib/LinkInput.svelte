@@ -6,26 +6,29 @@ import Supported from './Supported.svelte'
 let out
 let parse = () => {
     // alert(import.meta.env.VITE_API_KEY)
-    out = 'load'
-    fetch(`https://proxy.cors.sh/${link}`,{
-        headers: {
-            'x-cors-api-key': import.meta.env.VITE_API_KEY,
-        }
-    })
-    .then(d => d.text())
-    .then(d => {
-        let b = d.search('poster="')+8
-        // out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
-        out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded')
-        // console.log(d)
-    })
-    // out = 'https://cdn.numerade.com/encoded/758b4d3a-b577-4ab7-ac11-320d7b4779d6.webm'
+    if (link!=null&&link.includes('numerade')){
+        out = 'load'
+        fetch(`https://proxy.cors.sh/${link}`,{
+            headers: {
+                'x-cors-api-key': import.meta.env.VITE_API_KEY,
+            }
+        })
+        .then(d => d.text())
+        .then(d => {
+            let b = d.search('poster="')+8
+            // out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
+            out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded')
+            // console.log(d)
+        })
+        // out = 'https://cdn.numerade.com/encoded/758b4d3a-b577-4ab7-ac11-320d7b4779d6.webm'
+    }
 }
 if (link!=null){parse()}
 </script>
 
 <input placeholder="Paste link here" bind:value="{link}" on:keyup={e=>e.key==='Enter'&&parse()}>
 <div class="btn-grp">
+    <button on:click={_ => parse()}>Get Answers!</button>
     <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser", '_blank').focus()}>Star me on GitHub!</button>
     <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc", '_blank').focus()}>Found a bug?</button>
 </div>
