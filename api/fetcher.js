@@ -1,3 +1,5 @@
+import fetch from "node-fetch";
+
 export default function hello(req, res) {
     res.statusCode = 200;
     const link = req.query.link;
