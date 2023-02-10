@@ -6,6 +6,6 @@ export default function hello(req, res) {
     fetch(link).then(d => d.text())
     .then(d => {
         let b = d.search('poster="')+8
-        res.send( (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded') )
+        res.send( (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('ask_previews', 'encoded').replace('previews', 'encoded') )
     })
 }
