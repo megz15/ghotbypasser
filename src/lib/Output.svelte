@@ -18,10 +18,9 @@
         }>
     </video>
 {:else if site=='quizlet'}
-    <h4 style="padding: 0 1em 0 1em;">Here's the solution in {link.length} steps!</h4>
+    <h4 style="padding: 0 1em 0 1em;">Here's the solution in {steps} step{#if steps!=1}s{/if}!</h4>
     {#each link as l}
         <!-- svelte-ignore a11y-missing-attribute -->
-        <!-- <img src='data:image/png;base64,{l}'> -->
-        <img style='border-radius:8px;margin-bottom:10px;' src='{l}' width='98%'>
+        <img style='border-radius:8px;margin-bottom:10px;' src='data:image/png;base64,{l}' width='98%'>
     {/each}
 {/if}

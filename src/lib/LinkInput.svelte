@@ -19,10 +19,10 @@ let parse = () => {
         site = 'quizlet'
         out = 'load'
         
-        // fetch(`/api/quizlet?link=${link}`)
-        // .then(d => d.json()).then(d => out = d)
+        fetch(`/api/quizlet?link=${link}`)
+        .then(d => d.json()).then(d => out = d)
     }
-    out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
+    // out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
 }
 if (link!=null){parse()}
 </script>
@@ -55,8 +55,8 @@ if (link!=null){parse()}
 >
 <div class="btn-grp">
     <button on:click={_ => parse()} class:answer="{ansBtn}">Get Answer</button>
-    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser", '_blank').focus()}>Star me on GitHub!</button>
-    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc", '_blank').focus()}>Found a bug?</button>
+    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser").focus()}>Star me on GitHub!</button>
+    <button on:click={_ => window.open("https://github.com/megz15/ghotbypasser/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc").focus()}>Found a bug?</button>
 </div>
 
 {#if out==null}
