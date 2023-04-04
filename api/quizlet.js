@@ -1,11 +1,11 @@
 import fetch from "node-fetch";
-import { firefox } from 'playwright';
+import { chromium } from 'playwright';
 
 export default async function quizlet_fetcher(req, res) {
     res.statusCode = 200;
     const link = req.query.link;
 
-    const browser = await firefox.launch({headless: true});
+    const browser = await chromium.launch({headless: true});
     
     const page = await browser.newPage();
     await page.setExtraHTTPHeaders({
