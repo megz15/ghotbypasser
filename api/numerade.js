@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export default function hello(req, res) {
+export default function numerade_fetcher(req, res) {
     res.statusCode = 200;
     const link = req.query.link;
     fetch(link).then(d => d.text())

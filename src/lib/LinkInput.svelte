@@ -1,24 +1,28 @@
 <script>
 export let link
+
 import Output from './Output.svelte'
 import Loading from './Loading.svelte'
 import Supported from './Supported.svelte'
+
 let ansBtn = false
-let out
+let out, site
+
 let parse = () => {
-    // alert(import.meta.env.VITE_API_KEY)
     if (link!=null&&link.includes('numerade')&&link.includes('question')){
+        site = 'numerade'
         out = 'load'
-        fetch(`/api/fetcher?link=${link}`)
+
+        fetch(`/api/numerade?link=${link}`)
         .then(d => d.text()).then(d => out = d)
-        // .then(d => {
-        //     let b = d.search('poster="')+8
-        //     // out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', (link.includes('/ask/question/')) ? 'ask_video' : 'encoded')
-        //     out = (d.slice(b, d.indexOf('_l', b)) + '.webm').replace('previews', 'encoded')
-        //     // console.log(d)
-        // })
+    } else if (link!=null&&link.includes('quizlet')) {
+        site = 'quizlet'
+        out = 'load'
+        
+        // fetch(`/api/quizlet?link=${link}`)
+        // .then(d => d.json()).then(d => out = d)
     }
-    // out = 'https://cdn.numerade.com/encoded/758b4d3a-b577-4ab7-ac11-320d7b4779d6.webm'
+    out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
 }
 if (link!=null){parse()}
 </script>
@@ -65,6 +69,6 @@ if (link!=null){parse()}
 </div>
 {:else}
 <div class="card">
-    <Output name="{out}"/>
+    <Output site="{site}" link="{out}"/>
 </div>
 {/if}
