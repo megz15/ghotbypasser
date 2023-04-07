@@ -3,7 +3,6 @@ export let link
 
 import Output from './Output.svelte'
 import Loading from './Loading.svelte'
-import Supported from './Supported.svelte'
 
 let ansBtn = false
 let out, site
@@ -61,7 +60,20 @@ if (link!=null){parse()}
 
 {#if out==null}
 <div>
-    <Supported />
+
+    <div class="card">
+        <h2>Supported Sites</h2>
+        <div class="btn-grp">
+            <button style="margin-left:10px;" on:click={_ => window.open("https://www.numerade.com/")}>Numerade</button>
+            <button style="margin-right:10px;" on:click={_ => window.open("https://www.quizlet.com/")}>Quizlet</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Disclaimer</h2>
+        <h5 style="padding-left: 3em; padding-right: 3em;">This website is intended for educational purposes only. We do not condone or encourage academic dishonesty or cheating. The tool provided on this website is designed to help students access study materials for research and learning purposes only. We are not responsible for any misuse of the tool or any consequences that may result from such misuse. It is the responsibility of the user to use this tool in a legal and ethical manner. By using this website, you agree to the terms and conditions of our disclaimer.</h5>
+    </div>
+
 </div>
 {:else if out=='load'}
 <div>

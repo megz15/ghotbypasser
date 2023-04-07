@@ -5,25 +5,25 @@ export default async function quizlet_fetcher(req, res) {
     res.statusCode = 200;
     const link = req.query.link;
 
-    // const browser = await chromium.launch({headless: true});
+    const browser = await chromium.launch({headless: true});
     // const browser = await chromium.connect(
     //     `wss://chrome.browserless.io/playwright?token=${process.env.VITE_TOKEN}&--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36`
     // );
 
-    const capabilities = {
-        'browserName': 'pw-firefox',
-        'browserVersion': 'latest',
-        'LT:Options': {
-            'platform': 'Windows 10',
-            'user': process.env.VITE_LT_USER,
-            'accessKey': process.env.VITE_LT_KEY,
-            "headless": true,
-        }
-    }
+    // const capabilities = {
+    //     'browserName': 'pw-firefox',
+    //     'browserVersion': 'latest',
+    //     'LT:Options': {
+    //         'platform': 'Windows 10',
+    //         'user': process.env.VITE_LT_USER,
+    //         'accessKey': process.env.VITE_LT_KEY,
+    //         "headless": true,
+    //     }
+    // }
 
-    const browser = await chromium.connect(
-        `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
-    )
+    // const browser = await chromium.connect(
+    //     `wss://cdp.lambdatest.com/playwright?capabilities=${encodeURIComponent(JSON.stringify(capabilities))}`
+    // )
     
     const page = await browser.newPage();
     await page.setExtraHTTPHeaders({

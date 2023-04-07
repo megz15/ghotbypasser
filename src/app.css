@@ -80,18 +80,26 @@ h1 {
   justify-content: center;
 }
 
-h3 {
+/* h3 {
   border: 0px;
+} */
+
+h2 {
+  color: #535bf2;
 }
 
 .card, .btn-grp {
   background-color: #202020;
   border-radius: 8px;
   padding: 0.5em 0em 0.5em 0em;
-  color: #535bf2;
+  /* color: #535bf2; */
   width:50%;
   min-width:350px;
   margin: 0.5em auto;
+  margin-bottom: 1em;
+}
+
+.card:last-child {
   margin-bottom: 5em;
 }
 
