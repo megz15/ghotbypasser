@@ -47,13 +47,13 @@ a:hover {
   color: #535bf2;
 }
 
-div > a {
+/* div > a {
   all: unset;
 }
 
 div > a:hover {
   all: unset;
-}
+} */
 
 body {
   place-items: center;

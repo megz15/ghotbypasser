@@ -23,4 +23,9 @@
         <!-- svelte-ignore a11y-missing-attribute -->
         <img style='border-radius:8px;margin-bottom:10px;' src='data:image/png;base64,{l}' width='98%'>
     {/each}
+{:else if site=='none'}
+    <div style="padding: 2em 1em 2em 1em;">
+        Your site isn't supported yet. Open an issue, or try using this:<br>
+        <a href={link}>{link}</a>
+    </div>
 {/if}

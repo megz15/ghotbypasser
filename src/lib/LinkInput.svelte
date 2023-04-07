@@ -20,6 +20,9 @@ let parse = () => {
         
         fetch(`/api/quizlet?link=${link}`)
         .then(d => d.json()).then(d => out = d)
+    } else {
+        site = 'none'
+        out = `https://12ft.io/${link}`
     }
     // out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
 }
