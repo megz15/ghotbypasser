@@ -127,6 +127,13 @@ input, button {
   margin: 1em auto;
   padding: 1em;
 }
+
+button {
+  transition: transform 0.08s ease-out, border-color 0.25s;
+  min-width: 0px;
+  margin: 0 0 1em 0;
+}
+
 input:hover, button:hover {
   border-color: #646cff;
 }
@@ -149,13 +156,13 @@ button:active {
   align-items: center; */
 }
 
-.btn-grp > button {
-  transition: transform 0.08s ease-out, border-color 0.25s;
+/* .btn-grp > button { */
+  /* transition: transform 0.08s ease-out, border-color 0.25s; */
   /* width: 49%; */
-  min-width: 0px;
-  margin: 0 0 1em 0;
+  /* min-width: 0px; */
+  /* margin: 0 0 1em 0; */
   /* box-shadow: none; */
-}
+/* } */
 
 svg.waves {
   display: none

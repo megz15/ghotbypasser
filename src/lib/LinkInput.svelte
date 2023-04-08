@@ -27,23 +27,59 @@ let parse = () => {
     // out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
 }
 if (link!=null){parse()}
+
+let show = {quizlet: false, numerade: false}
+
+function toggle(site) {
+    show[site] = !show[site]
+}
+
 </script>
 
 <style>
 .answer {
   background-color: green;
 }
+
 .answer:hover {
   border-color: green;
   transition: background-color 0.5s;
   background-color: rgb(8, 209, 8);
 }
+
 .answer:not(:hover) {
   border-color: green;
   transition: background-color 0.5s;
   background-color: green;
 }
+
+.modal {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    backdrop-filter: blur(5px) brightness(0.4);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
 </style>
+
+{#if show.quizlet}
+  <div class="modal">
+      <h2>Modal Title</h2>
+      <p>Modal content goes here.</p>
+      <button on:click={_ => toggle('quizlet')}>Close Modal</button>
+  </div>
+{/if}
+
+{#if show.numerade}
+  <div class="modal">
+      <h2>Modal Title</h2>
+      <p>Modal content goes here.</p>
+      <button on:click={_ => toggle('numerade')}>Close Modal</button>
+  </div>
+{/if}
 
 <input placeholder="Paste link here" bind:value="{link}"
     on:keyup={e=>e.key==='Enter'&&parse()}
@@ -67,8 +103,8 @@ if (link!=null){parse()}
     <div class="card">
         <h2>Supported Sites</h2>
         <div class="btn-grp">
-            <button style="margin-left:10px;" on:click={_ => window.open("https://www.numerade.com/")}>Numerade</button>
-            <button style="margin-right:10px;" on:click={_ => window.open("https://www.quizlet.com/")}>Quizlet</button>
+            <button style="margin-left:10px;" on:click={_ => toggle('numerade')}>Numerade</button>
+            <button style="margin-right:10px;" on:click={_ => toggle('quizlet')}>Quizlet</button>
         </div>
     </div>
 
