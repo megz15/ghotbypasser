@@ -6,6 +6,8 @@ import Loading from './Loading.svelte'
 
 let ansBtn = false
 let out, site
+let ltUser = localStorage.getItem('lt_user') ?? "Username"
+let ltKey = localStorage.getItem('lt_key') ?? "Access Token"
 
 let parse = () => {
     if (link!=null&&link.includes('numerade')&&link.includes('question')){
@@ -18,7 +20,14 @@ let parse = () => {
         site = 'quizlet'
         out = 'load'
         
-        fetch(`/api/quizlet?link=${link}`)
+        fetch(`http://ger2.dynamichost.cc:20011/qz`, {method: 'POST', body: JSON.stringify({
+            link: link,
+            user: localStorage.getItem('lt_user'),
+            key: localStorage.getItem('lt_key')
+        }), headers: {
+            // 'x-cors-api-key': '',
+            'Content-Type': 'application/json'
+        }})
         .then(d => d.json()).then(d => out = d)
     } else {
         site = 'none'
@@ -58,26 +67,40 @@ function toggle(site) {
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
-    backdrop-filter: blur(5px) brightness(0.4);
+    backdrop-filter: blur(4px) brightness(0.3);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.ltfields {
+    margin-bottom: 2em;
+    width: 100%;
+    /* min-width: 250px; */
 }
 </style>
 
 {#if show.quizlet}
   <div class="modal">
-      <h2>Modal Title</h2>
-      <p>Modal content goes here.</p>
-      <button on:click={_ => toggle('quizlet')}>Close Modal</button>
+      <h2>Quizlet Bypasser</h2>
+      <p>To use the Quizlet bypasser, you need to go to <a href='https://www.lambdatest.com/'>https://www.lambdatest.com/</a>
+         <br>and register an account. Go to <a href='https://accounts.lambdatest.com/security'>your profile</a>, and enter
+         <br>the <kbd>Access Token</kbd> and <kbd>Username</kbd> fields below.</p>
+         <input bind:value={ltUser} class="ltfields"><input bind:value={ltKey} class="ltfields">
+      <button on:click={_ => {
+        localStorage.setItem('lt_user', ltUser)
+        localStorage.setItem('lt_key', ltKey)
+        toggle('quizlet')
+      }}>Done!</button>
   </div>
 {/if}
 
 {#if show.numerade}
   <div class="modal">
-      <h2>Modal Title</h2>
-      <p>Modal content goes here.</p>
-      <button on:click={_ => toggle('numerade')}>Close Modal</button>
+      <h2>Numerade Bypasser</h2>
+      <p>Simply enter a link from <a href='https://www.numerade.com'>https://www.numerade.com</a>
+         <br>and get the answer video in seconds!</p>
+      <button on:click={_ => toggle('numerade')}>Understood!</button>
   </div>
 {/if}
 
