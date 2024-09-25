@@ -16,7 +16,7 @@
   </div>
 
   <p class="footer">
-    <span>Created with ☕ & 💗 by <a href="https://github.com/megz15">Meghraj Goswami</a><br></span>
+    <span>Created with 🦶 & 🫶 by <a href="https://github.com/megz15">Meghraj Goswami</a><br></span>
     <!-- <span style="font-size: small;">This site is protected by 0.5 brain cells. <a href="http://bit.ly/3HdlMfz">TOS apply.</a></span> -->
   </p>
 </main>

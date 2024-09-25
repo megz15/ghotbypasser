@@ -3,6 +3,7 @@ export let link
 
 import Output from './Output.svelte'
 import Loading from './Loading.svelte'
+import acd from '../assets/acd.png'
 
 let ansBtn = false
 let out, site
@@ -16,24 +17,10 @@ let parse = () => {
 
         fetch(`/api/numerade?link=${link}`)
         .then(d => d.text()).then(d => out = d)
-    } else if (link!=null&&link.includes('quizlet')) {
-        site = 'quizlet'
-        out = 'load'
-        
-        fetch(`http://ger2.dynamichost.cc:20011/qz`, {method: 'POST', body: JSON.stringify({
-            link: link,
-            user: localStorage.getItem('lt_user'),
-            key: localStorage.getItem('lt_key')
-        }), headers: {
-            // 'x-cors-api-key': '',
-            'Content-Type': 'application/json'
-        }})
-        .then(d => d.json()).then(d => out = d)
     } else {
         site = 'none'
         out = `https://12ft.io/${link}`
     }
-    // out = ['https://i.imgur.com/4eyDrTv.png', 'https://i.imgur.com/Yj9Jin8.png', 'https://i.imgur.com/Dz3CtsM.png']
 }
 if (link!=null){parse()}
 
@@ -98,8 +85,8 @@ function toggle(site) {
 {#if show.numerade}
   <div class="modal">
       <h2>Numerade Bypasser</h2>
-      <p>Simply enter a link from <a href='https://www.numerade.com'>https://www.numerade.com</a>
-         <br>and get the answer video in seconds!</p>
+      <p>Enter a link from <a href='https://www.numerade.com'>https://www.numerade.com</a>
+         <br>and get the answer video immediately!</p>
       <button on:click={_ => toggle('numerade')}>Understood!</button>
   </div>
 {/if}
@@ -125,15 +112,14 @@ function toggle(site) {
 
     <div class="card">
         <h2>Supported Sites</h2>
-        <div class="btn-grp">
-            <button style="margin-left:10px;" on:click={_ => toggle('numerade')}>Numerade</button>
-            <button style="margin-right:10px;" on:click={_ => toggle('quizlet')}>Quizlet</button>
+        <div>
+            <button on:click={_ => toggle('numerade')}>Numerade</button>
+            <!-- <button style="margin-right:10px;" on:click={_ => toggle('quizlet')}>Quizlet</button> -->
         </div>
     </div>
 
     <div class="card">
-        <h2>Disclaimer</h2>
-        <h5 style="padding-left: 3em; padding-right: 3em;">This website is intended for educational purposes only. We do not condone or encourage academic dishonesty or cheating. The tool provided on this website is designed to help students access study materials for research and learning purposes only. We are not responsible for any misuse of the tool or any consequences that may result from such misuse. It is the responsibility of the user to use this tool in a legal and ethical manner. By using this website, you agree to the terms and conditions of our disclaimer.</h5>
+        <img src="{acd}" class="acd" alt="acd" width="98%" />
     </div>
 
 </div>
